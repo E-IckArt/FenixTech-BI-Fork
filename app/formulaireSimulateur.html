@@ -2,10 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <!-- Own CSS style -->
         <link
@@ -17,6 +14,7 @@
         <link
             href="../node_modules/bootstrap/dist/css/bootstrap.css"
             rel="stylesheet"
+            type="text/css"
         />
         <!-- Favicon -->
         <link rel="shortcut icon" href="#" type="image/png" />
@@ -25,21 +23,24 @@
     </head>
     <body class="bg-light">
         <!-- Start : Header -->
-        <div class="container-fluid sticky-top">
+        <header class="container-fluid sticky-top">
             <div class="row">
-                <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                <nav
+                    class="navbar navbar-expand-lg bg-dark navbar-dark"
+                    aria-label="Barre de navigation"
+                >
                     <div class="container-fluid px-0">
                         <a
                             class="navbar-brand align-self-start"
                             href="index.html"
                             ><img
                                 class="bg-light rounded-3"
-                                src="assets\images\logo_logiciel_150ppp.png"
+                                src="assets/images/logo_logiciel_150ppp.png"
                                 width="40"
                                 height="40"
                                 alt="logo - lien clickable"
                             />
-                            <span class="ps-3">FENIXCost&Flux</span></a
+                            <span class="ps-3 fs-3">FENIXCost&Flux</span></a
                         >
                         <button
                             class="navbar-toggler"
@@ -171,7 +172,7 @@
                     </div>
                 </nav>
             </div>
-        </div>
+        </header>
         <!-- End : Header -->
         <!-- Start : Main -->
         <div class="container-fluid mt-3 mt-lg-5">
@@ -209,7 +210,7 @@
             <!-- Start : Form-->
             <div class="row align-items-center justify-content-center">
                 <div class="col-12 col-md-10 col-lg-6">
-                    <form action="" method="">
+                    <form action="#" method="#">
                         <div
                             class="accordion mb-3"
                             id="accordionPanelsStayOpenExample"
@@ -305,7 +306,7 @@
                                                     <input
                                                         type="number"
                                                         class="form-control"
-                                                        id="kilometrage_annuel moyen"
+                                                        id="kilometrage_annuel_moyen"
                                                         placeholder=""
                                                         title="Exemple : 9999"
                                                         step="1"
@@ -313,7 +314,7 @@
                                                         required
                                                     />
                                                     <label
-                                                        for="kilometrage_annuel moyen"
+                                                        for="kilometrage_annuel_moyen"
                                                         class="text-muted"
                                                         >Ex: 9999
                                                     </label>
@@ -733,7 +734,7 @@
                                                         data-bs-toggle="collapse"
                                                         data-bs-target="#flush-collapseFour"
                                                         aria-expanded="false"
-                                                        aria-controls="flush-collapse4"
+                                                        aria-controls="flush-collapseFour"
                                                     >
                                                         Les péages
                                                     </button>
@@ -881,7 +882,6 @@
                             <button
                                 class="btn btn-outline-success"
                                 type="submit"
-                                role="button"
                             >
                                 Valider
                             </button>
@@ -956,9 +956,12 @@
         </div>
         <!-- End : Main -->
         <!-- Start : Footer -->
-        <footer class="container-fluid bg-dark mt-5">
+        <footer class="container-fluid bg-dark">
             <div class="row">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark " aria-labelledby="#">
+                <nav
+                    class="navbar navbar-expand-lg navbar-dark bg-dark"
+                    aria-label="Barre de navigation du pied de page"
+                >
                     <div class="container-fluid justify-content-evenly">
                         <ul class="navbar-nav align-items-center">
                             <li class="nav-item">
@@ -970,18 +973,34 @@
                                 >
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Contact</a>
-                            </li>
-                            <li class="nav-item">                                       <a class="nav-link text-white" href="#"
-                                    >Mentions légales</a>
+                                <a class="nav-link text-white" href="#"
+                                    >Contact</a
+                                >
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="https://www.youtube.com/watch?v=n-xOQaVKFgo"
-                                    target="_blank">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
-                                        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
-                                    </svg></i>
-                                </a></a>
+                                <a class="nav-link text-white" href="#"
+                                    >Mentions légales</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link text-white"
+                                    href="https://www.youtube.com/watch?v=n-xOQaVKFgo"
+                                    target="_blank"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="25"
+                                        height="25"
+                                        fill="currentColor"
+                                        class="bi bi-youtube"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"
+                                        />
+                                    </svg>
+                                </a>
                             </li>
                         </ul>
                     </div>

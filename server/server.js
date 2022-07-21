@@ -1,8 +1,5 @@
-/**
- * Initialiser nodejs avec express et mongodb
- * Doc : https://expressjs.com/fr/starter/hello-world.html
- * @type {e | (() => Express)}
- */
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const server = express();
@@ -13,7 +10,7 @@ server.use(express.json());
 //Permet à express d'utiliser les fichiers statiques (css / js) dans app
 server.use(express.static("app"));
 //Chemin absolu à partir duquel se lance le processus node
-server.use("/node_modules", express.static(__dirname + "/node_modules"));
+server.use("/node_modules", express.static(__dirname + "/../node_modules"));
 
 //Quand reçoit une requête sur l'url d'origine ça envoie le fichier index.html
 server.get('/', (req, res) => {
@@ -26,7 +23,9 @@ server.listen(port, () => {
 })
 
 // URI (Uniform Resource Identifier)
-const uri = "mongodb+srv://Tiphaine:admin@cluster0.tyr5k.mongodb.net/FenixTechDatabase?retryWrites=true&w=majority";
+const dbHost = process.env.DB_HOST;
+const dbPwd = process.env.DB_PWD;
+const uri = `mongodb+srv://${dbHost}:${dbPwd}@cluster0.tyr5k.mongodb.net/FenixTechDatabase?retryWrites=true&w=majority`;
 const mongoClient = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -36,39 +35,26 @@ const mongoClient = new MongoClient(uri, {
 //Indique dans la console si je suis bien connectée à mongodb
 mongoClient.connect(() => {
   console.info("logged to database");
+}, () => {
+  console.info("error while logging to database");
 });
 
-
-/**
- * Pour recevoir / requêter une donnée de la base de données
- * https://www.mongodb.com/docs/v4.2/reference/method/db.collection.find/
- * Indique le nom de la collection et le document associé de mongodb
- * Convertis en array le résultat
- */
-server.get('/ping', function (req, res) {
-  console.info("called ping endpoint");
-  const collection = mongoClient.db('FenixTechDatabase').collection('test')
-  collection.find({}).toArray(function (err, results) {
+server.get('/cc6Form', function (req, res) {
+  console.info("called cc6 form endpoint");
+  const collection = mongoClient.db('FenixTechDatabase').collection('FormCC6')
+  // TODO if document is not found, create a new empty document for this year
+  collection.find({year: req.query['year']}).toArray(function (err, results) {
     res.send(results[0]);
   })
 })
 
-server.get('/simulator', function (req, res) {
-  console.info("called ping endpoint");
-  const collection = mongoClient.db('FenixTechDatabase').collection('test')
-  collection.find({}).toArray(function (err, results) {
-    res.send(results[1]);
-  })
-})
-
 /**
- * Pour modifier des données de la base de données
+ * Pour modifier des données CC6 de la base de données
  */
-
-server.put('/simulator/:id', function (req, res) {
+server.put('/cc6Form/:id', function (req, res) {
   const reqId = req.params.id;
-  console.info("called simulator endpoint with id : " + reqId);
-  const collection = mongoClient.db('FenixTechDatabase').collection('test');
+  console.info("called cc6 form endpoint with id : " + reqId);
+  const collection = mongoClient.db('FenixTechDatabase').collection('FormCC6');
   collection.updateOne({ _id: ObjectId(reqId) }, { $set: req.body }).then(() => {
     collection.find({ _id: ObjectId(reqId) }).toArray(function (err, results) {
       res.statusCode = 200;
@@ -83,9 +69,9 @@ server.put('/simulator/:id', function (req, res) {
 /**
  * Pour ajouter des données dans la base de donnée
  */
-server.post('/simulator', function (req, res) {
-  console.info("called simulator endpoint and create new simulation");
-  const collection = mongoClient.db('FenixTechDatabase').collection('test');
+server.post('/vForm', function (req, res) {
+  console.info("called v form endpoint and add new vehicule");
+  const collection = mongoClient.db('FenixTechDatabase').collection('FormV');
   collection.insertOne({ ...req.body }).then((doc) => {
     collection.find({ _id: ObjectId(doc.insertedId) }).toArray(function (err, results) {
       res.statusCode = 200;

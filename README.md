@@ -2,12 +2,12 @@
 
 ## Credentials
 
-### Accéder à l'interface du commercial
-email : commercial@example.com
+### Accéder à l'interface du commercial du POC
+email : commercial@example.com  
 mdp : commercial
 
-### Accéder à l'interface contrôleur de gestion
-email : controleur@example.com
+### Accéder à l'interface contrôleur de gestion du POC
+email : controleur@example.com  
 mdp : controleur
 
 ## Contexte

@@ -1,5 +1,17 @@
 # Hackathon Studi - FénixTech
 
+## Credentials
+
+### Accéder à l'interface du commercial
+email : commercial@example.com
+mdp : commercial
+
+### Accéder à l'interface contrôleur de gestion
+email : controleur@example.com
+mdp : controleur
+
+## Contexte
+
 Vous avez été contacté par la start-up PITCH MY BUSINESS qui a
 repéré votre profil parmi plusieurs centaines de candidats.
 Son Président vous contacte et sollicite vos compétences afin de
@@ -36,5 +48,3 @@ https://stackoverflow.com/questions/71892543/heroku-and-github-items-could-not-b
 ```bash
 git push heroku master 
 ```
-
-## Sources des images 
